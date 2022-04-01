@@ -39,13 +39,10 @@ public class BinaryTreeDemo {
         System.out.println("Height of Tree: " + a.getHeight(root));
     
         System.out.println("Total Leaf Nodes: " + a.countNodes(root));
-    
-        System.out.println("Displaying the nodes at specific level...");
-        a.printTreeAtLevel(root, 2);
-        System.out.println();
 
         System.out.println("Displaying the whole tree...");
-        a.displayTree(root);
+        a.displayTree(root, 0);
+        System.out.println();
         
         System.out.println("Displaying preorder traversal of the tree...");
         a.preOrder(root);

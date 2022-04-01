@@ -33,14 +33,24 @@ public class BinaryTree {
     printTreeAtLevel(node.right, level - 1);
 }
 
-public void displayTree(Node node) {
-  if (node == null) {
-      return;
-  }
-  for (int i = 0; i <= getHeight(node); i++) {
-      printTreeAtLevel(node, i + 1);
-      System.out.println();
-  }
+public final int COUNT = 10;
+
+public void displayTree(Node root, int space) {
+    if (root == null) {
+        return;
+    }
+
+    space += COUNT;
+
+    displayTree(root.right, space);
+
+    System.out.print("\n");
+    for (int i = COUNT; i < space; i++) {
+        System.out.print(" ");
+    }
+    System.out.print(root.data + "\n");
+
+    displayTree(root.left, space);
 }
 
     public void inOrder(Node node) {
