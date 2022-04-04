@@ -1,7 +1,7 @@
 public class Node {
     public Node left;
     public Node right;
-    public int data;
+    public String data;
     
     public Node getLeft() {
       return left;
@@ -15,10 +15,10 @@ public class Node {
     public void setRight(Node right) {
       this.right = right;
     }
-    public int getData() {
+    public String getData() {
       return data;
     }
-    public void setData(int data) {
+    public void setData(String data) {
       this.data = data;
     }
   }

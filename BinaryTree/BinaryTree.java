@@ -1,6 +1,6 @@
 public class BinaryTree {
 
-  public Node createNewNode(int data) {
+  public Node createNewNode(String data) {
     Node newNode = new Node();
     newNode.data = data;
     newNode.left = null;
@@ -10,7 +10,7 @@ public class BinaryTree {
 
   public int getHeight(Node node) {
     if (node == null) {
-      return -1;
+      return 0;
     }
     return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
   }
@@ -21,21 +21,9 @@ public class BinaryTree {
     return 1 + countNodes(root.left) + countNodes(root.right);
   }
 
-  public void printTreeAtLevel(Node node, int level) {
-    if (node == null) {
-        return;
-    }
-    if (level == 1) {
-        System.out.println(node.data);
-        return;
-    }
-    printTreeAtLevel(node.left, level - 1);
-    printTreeAtLevel(node.right, level - 1);
-}
+  public final int COUNT = 10;
 
-public final int COUNT = 10;
-
-public void displayTree(Node root, int space) {
+  public void displayTree(Node root, int space) {
     if (root == null) {
         return;
     }
@@ -53,7 +41,7 @@ public void displayTree(Node root, int space) {
     displayTree(root.left, space);
 }
 
-    public void inOrder(Node node) {
+  public void inOrder(Node node) {
       if (node == null) {
           return;
       }
@@ -95,6 +83,44 @@ public void displayTree(Node root, int space) {
     return t1.data == t2.data 
       && checkForClones(t1.left, t2.left) 
       && checkForClones(t1.right, t2.right);
+  }
+
+  public static boolean isLeaf(Node node) {
+    return node.left == null && node.right == null;
+}
+
+  public static double process(String op, double x, double y)
+  {
+      if (op.equals("+")) { 
+        return x + y; 
+      }
+      if (op.equals("-")) { 
+        return x - y; 
+      }
+      if (op.equals("*")) { 
+        return x * y; 
+      }
+      if (op.equals("/")) { 
+        return x / y; 
+      }
+
+      return 0;
+  }
+
+  public double evaluate(Node root)
+  {
+      if (root == null) {
+          return 0;
+      }
+
+      if (isLeaf(root)) {
+          return Double.valueOf(root.data);
+      }
+
+      double x = evaluate(root.left);
+      double y = evaluate(root.right);
+
+      return process(root.data, x, y);
   }
 
 }
