@@ -8,6 +8,8 @@ public class BinaryTree {
     return newNode;
   }
 
+
+//get height
   public int getHeight(Node node) {
     if (node == null) {
       return 0;
@@ -15,6 +17,8 @@ public class BinaryTree {
     return Math.max(getHeight(node.left), getHeight(node.right)) + 1;
   }
 
+
+//count nodes
   public int countNodes(Node root) {
     if(root == null)
       return 0;
