@@ -1,6 +1,6 @@
 public class BinaryTree {
 
-  public Node createNewNode(String data) {
+  public Node createNewNode(String data) { //initializing
     Node newNode = new Node();
     newNode.data = data;
     newNode.left = null;
@@ -20,22 +20,20 @@ public class BinaryTree {
 
 //count nodes
   public int countNodes(Node root) {
-    if(root == null)
+    if(root == null){
       return 0;
+    }
     return 1 + countNodes(root.left) + countNodes(root.right);
   }
 
-  public final int COUNT = 10;
 
+  public final int COUNT = 10; //spacing for tree
   public void displayTree(Node root, int space) {
     if (root == null) {
         return;
     }
-
     space += COUNT;
-
     displayTree(root.right, space);
-
     System.out.print("\n");
     for (int i = COUNT; i < space; i++) {
         System.out.print(" ");
@@ -44,6 +42,7 @@ public class BinaryTree {
 
     displayTree(root.left, space);
 }
+
 
   public void inOrder(Node node) {
       if (node == null) {
@@ -55,43 +54,46 @@ public class BinaryTree {
       inOrder(node.right);
   }
 
+
   public void preOrder(Node node) {
       if (node == null) {
           return;
       }
-
       System.out.print(node.data + " -- ");
       preOrder(node.left);
       preOrder(node.right);
   }
 
+
   public void postOrder(Node node) {
       if (node == null) {
           return;
       }
-
       postOrder(node.left);
       postOrder(node.right);
       System.out.print(node.data + " -- ");
   }
 
+
   public boolean checkForClones(Node t1, Node t2) {
-    if(t1 == null && t2 == null) {
+    if(t1 == null && t2 == null) { //checks if both trees are empty
       return true;
     }
     
-    if(t1 == null || t2 == null) {
+    if(t1 == null || t2 == null) {//if one is empty while one is not return false
       return false;
     }
     
-    return t1.data == t2.data 
+    return t1.data == t2.data  //compare both
       && checkForClones(t1.left, t2.left) 
       && checkForClones(t1.right, t2.right);
   }
 
-  public static boolean isLeaf(Node node) {
+
+  public static boolean isLeaf(Node node) { 
     return node.left == null && node.right == null;
 }
+
 
   public static double process(String op, double x, double y)
   {
@@ -111,6 +113,7 @@ public class BinaryTree {
       return 0;
   }
 
+
   public double evaluate(Node root)
   {
       if (root == null) {
@@ -126,5 +129,4 @@ public class BinaryTree {
 
       return process(root.data, x, y);
   }
-
 }
